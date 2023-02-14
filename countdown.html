@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            margin: 2cm;
+        }
+        input {
+            width: 8cm;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Countdown Timer</h1>
+        <input id="cd" placeholder="input countdown time and press enter">
+        <h1 id="timer"></h1>
+    </div>
+
+    <script>
+        const cd = document.getElementById("cd");
+        const timer = document.getElementById("timer");
+
+        function Dec(){
+            let t = parseInt(timer.innerText);
+            t--;
+            timer.innerText = t;
+            if(t===0){
+                clearInterval(myInterval);
+            }
+        }
+
+
+        cd.addEventListener("keypress", (e)=>{
+            let time = 0,count=0;
+            if(e.key=="Enter"){
+                if(cd.value%parseFloat(cd.value)==0){
+                timer.innerText =Math.floor(cd.value);
+                myInterval = setInterval(Dec,1000);
+            }
+            else{
+                timer.innerText=time;
+            }            
+            }
+        });
+
+    </script>
+</body>
+</html>
